@@ -26,5 +26,20 @@ You can also embed plots, for example:
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
+tar -xvf ~/Downloads/muscle3.8.31_i86darwin32.tar
+sudo mv muscle3.8.31_i86darwin32 /usr/local/bin/muscle
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+# Download some example PDB files
+library(bio3d)
+ids <- c("1TND_B","1AGR_A","1TAG_A","1GG2_A","1KJY_A","4G5Q_A")
+files <- get.pdb(ids, split = TRUE)
+# Extract and align the chains we are interested in
+pdbs <- pdbaln(files, fit = TRUE)
+
+pdbs
+
+```
+
